@@ -11,8 +11,10 @@ int main()
     std::cout << "Enter mass in grams and velocity in m per sec\n";
     std::cin >> massInGrams >> velocity;
 
-    std::cout << "Kinetic energy is " << 
-        GetKineticEnergy(ConvertGramsToKgs(massInGrams), velocity);
+    const auto massInKgs = ConvertGramsToKgs(massInGrams);
+    const auto energy = GetKineticEnergy(massInKgs, velocity);
+
+    std::cout << "Kinetic energy is " << energy;
     return 0;
 }
 
