@@ -4,11 +4,10 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#include <limits>
 
 using namespace std;
 
-int Square (int length);
+/*int Square (int length);
 double Square(const double length, const double factor);
 double Divide(double devident, double devider);
 bool isEven(int value);
@@ -17,14 +16,14 @@ double Volume(const double radius);
 double Squre_Sphera(const double radius);
 double f1(const double x, const double a);
 double f2(const double x, const double a);
-double y(const double x);
+double y(const double x);*/
 
 
-enum Action { volume, surface};
+//enum Action { volume, surface};
 
 int main()
 {
-    const auto leftBound = 2.0;
+    /*const auto leftBound = 2.0;
     const auto rightBound = 3.0;
     const auto step = 0.1;
 
@@ -87,7 +86,7 @@ int main()
     cin >> a >> n;
     cout << "S = " << Square(a, n) << " P = " << Perimeter(a, n);*/
 
-    /*const double x = 1.426;
+    const double x = 1.426;
     const double y = -1.22;
     const double z = 3.5;
 
@@ -96,10 +95,7 @@ int main()
 
     cout << setprecision(10) << a << ' ' << b << endl;
 
-    const auto epsilonDouble = numeric_limits<double>::epsilon();
-    const auto epsilonFloat = numeric_limits<float>::epsilon();
-    cout << "double = " << epsilonDouble << endl;
-    cout << "float = " << epsilonFloat;*/
+
 
 
 
@@ -126,7 +122,7 @@ int main()
 
     return 0;
 }
-
+/*
 double y (const double x)
 {
     return 3 * sin(sqrt(x)) + 0.39 * x - 3.8;
@@ -180,5 +176,5 @@ bool isEven(const int value)
         return  true;
     return false;*/
 
-    return value % 2 == 0;
-}
+//    return value % 2 == 0;
+//}
