@@ -2,25 +2,32 @@
 #define _USE_MATH_DEFINES // for C++
 
 #include <iostream>
-#include <cmath>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
-
-
+/**
+ * \brief Точка входа в программу.
+ * \return Код ошибки (0 - успех).
+ */
 int main()
 {
+    const auto x = 1.426;
+    const auto y = -1.22;
+    const auto z = 3.5;
 
-    const double x = 1.426;
-    const double y = -1.22;
-    const double z = 3.5;
+    const auto a = 2.0 * cos(x - M_PI / 6.0) / (0.5 + sin(y) * sin(y));
+    const auto b = 1.0 + z * z / (3.0 + z * z / 5.0);
 
-    const auto a = (2 * cos(x - M_PI / 6.0)) / (0.5 + sin(y) * sin(y));
-    const auto b = 1 + (z * z / (3 + z * z / 5.0));
+    cout << "x = " << x << "; "
+         << "y = " << y << "; "
+         << "z = " << z << ";\n";
 
-    cout << "x = " << x << "; y = " << y << "; z = " << z << "\n";
-    cout << setprecision(10) << "a = "<<a << "; b = " << b << endl;
+    cout << setprecision(10)
+         << "a = " << a << "; "
+         << "b = " << b << ";"
+         << endl;
 
     return 0;
 }
