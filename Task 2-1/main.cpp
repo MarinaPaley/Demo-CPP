@@ -2,50 +2,67 @@
 #define _USE_MATH_DEFINES // for C++
 
 #include <iostream>
-#include <cmath>
 #include <iomanip>
-#include <limits>
+#include <cmath>
+
 
 using namespace std;
 
+/**
+ * \brief Расчет объема шара.
+ * \param radius Радиус шара. 
+ * \return Объем шара.
+ */
 double Volume(const double radius);
-double Squre_Sphera(const double radius);
 
-enum Action { volume, surface };
 
+/**
+ * \brief Расчет площади поверхности шара.
+ * \param radius Радиус шара. 
+ * \return Площадь поверхности шара.
+ */
+double SurfaceArea(const double radius);
+
+/**
+ * \brief Пользовательский выбор расчета или объема шара (0),
+ * или площади поверхности шара (1)
+ */
+enum ActionChoice { volume, surface };
+
+/**
+ * \brief Точка входа в программу.
+ * \return Код ошибки (0 - успех).
+ */
 int main()
 {
-    double radius;
     cout << "Введите радиус шара = ";
+    double radius;
     cin >> radius;
-    cout << endl;
 
-    int input;
     cout << "Введите действие над шаром (объем = 0, площадь поверхности = 1) ";
+    int input;
     cin >> input;
 
-    const auto action = static_cast<Action>(input);
+    const auto choice = static_cast<ActionChoice>(input);
 
-    /*if (action == volume)
-    {
-        cout << "Объем шара = " << Volume(radius);
-    }
-    else
-    {
-        cout << "Поверхность шара = " << Squre_Sphera(radius);
-    }*/
-    switch (action)
+    switch (choice)
     {
         case volume:
-            cout << "Объем шара = " << Volume(radius);
+        {
+            const auto volume = Volume(radius);
+            cout << "Объем шара = " << volume;
             break;
+        }
         case surface:
-            cout << "Поверхность шара = " << Squre_Sphera(radius);
+        {
+            const auto surfaceArea = SurfaceArea(radius);
+            cout << "Поверхность шара = " << surfaceArea;
             break;
+        }
     }
     return 0;
 }
-double Squre_Sphera(const double radius)
+double SurfaceArea(const double radius)
 {
     return 4 * M_PI * radius * radius;
 }
