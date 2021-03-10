@@ -27,7 +27,7 @@ int main()
 double ConvertGramsToKgs(const double mass)
 {
     const auto kiloFactor = 1000;
-    return mass * kiloFactor;
+    return mass / kiloFactor;
 }
 
 /**
