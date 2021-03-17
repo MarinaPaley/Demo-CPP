@@ -8,24 +8,52 @@
 
 using namespace std;
 
-double y(const double x);
 
+/**
+ * \brief Функция расчета y.
+ * \param x Входной параметр.
+ * \param y Значение функции в точке x, при возможности расчета.
+ * \return true, если функция определена в заданной точке x.
+ */
+bool IsCalculated(const double x, double& y);
+
+/**
+ * \brief Точка входа в программу.
+ * \return Код ошибки (0 - успех).
+ */
 int main()
 {
-    const auto leftBound = 2.0;
+    const auto leftBound = 2;
     const auto rightBound = 3.0;
     const auto step = 0.1;
 
     auto x = leftBound;
+    cout << "  x" << setw(15) << "y\n";
     while ((x < rightBound) || (abs(x - rightBound) < step))
     {
-        cout << "x = " << setprecision(2) << x << " y =  " << setprecision(5) << y(x) << endl;
+        double y;
+        if (IsCalculated(x, y))
+        {
+            cout << setprecision(2) << x << setw(15)
+                 << setprecision(5) << y << '\n';
+        }
+        else
+        {
+            cout << setprecision(2) << x << setw(15)
+                 << "not defined \n";
+        }
         x += step;
     }
     return 0;
 }
 
-double y(const double x)
+bool IsCalculated(const double x, double& y)
 {
-    return 3 * sin(sqrt(x)) + 0.39 * x - 3.8;
+    const auto isCalculted = x >= 0;
+    if (isCalculted)
+    {
+        y = 3 * sin(sqrt(x)) + 0.39 * x - 3.8;
+    }
+    return isCalculted;
+    
 }
