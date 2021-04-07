@@ -13,7 +13,7 @@ using namespace std;
  * \param radius Радиус шара. 
  * \return Объем шара.
  */
-double Volume(const double radius);
+double GetVolume(const double radius);
 
 
 /**
@@ -21,13 +21,13 @@ double Volume(const double radius);
  * \param radius Радиус шара. 
  * \return Площадь поверхности шара.
  */
-double SurfaceArea(const double radius);
+double GetSurfaceArea(const double radius);
 
 /**
  * \brief Пользовательский выбор расчета или объема шара (0),
  * или площади поверхности шара (1)
  */
-enum ActionChoice { volume, surface };
+enum class ActionChoice { volume, surface };
 
 /**
  * \brief Точка входа в программу.
@@ -47,27 +47,28 @@ int main()
 
     switch (choice)
     {
-        case volume:
+        case ActionChoice::volume:
         {
-            const auto volume = Volume(radius);
+            const auto volume = GetVolume(radius);
             cout << "Объем шара = " << volume;
             break;
         }
-        case surface:
+        case ActionChoice::surface:
         {
-            const auto surfaceArea = SurfaceArea(radius);
+            const auto surfaceArea = GetSurfaceArea(radius);
             cout << "Поверхность шара = " << surfaceArea;
             break;
         }
     }
+    cout << endl;
     return 0;
 }
-double SurfaceArea(const double radius)
+double GetSurfaceArea(const double radius)
 {
     return 4 * M_PI * radius * radius;
 }
 
-double Volume(const double radius)
+double GetVolume(const double radius)
 {
     return 4.0 / 3.0 * M_PI * pow(radius, 3);
 }
