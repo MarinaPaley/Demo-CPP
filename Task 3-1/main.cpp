@@ -10,12 +10,18 @@ using namespace std;
 
 
 /**
- * \brief Функция расчета y.
- * \param x Входной параметр.
- * \param y Значение функции в точке x, при возможности расчета.
+ * \brief Возможность расчета функции в точке.
+ * \param x Входной параметр - точка x.
  * \return true, если функция определена в заданной точке x.
  */
-bool IsCalculated(const double x, double& y);
+bool IsCalculated(const double x);
+
+/**
+ * \brief Расчет функции в точке x.
+ * \param x Входной параметр - точка x.
+ * \return Значение функции в точке x
+ */
+double Calculation(const double x);
 
 /**
  * \brief Точка входа в программу.
@@ -23,7 +29,7 @@ bool IsCalculated(const double x, double& y);
  */
 int main()
 {
-    const auto leftBound = 2;
+    const auto leftBound = 2.0;
     const auto rightBound = 3.0;
     const auto step = 0.1;
 
@@ -31,15 +37,15 @@ int main()
     cout << "  x" << setw(15) << "y\n";
     while ((x < rightBound) || (abs(x - rightBound) < step))
     {
-        double y;
-        if (IsCalculated(x, y))
+        if (IsCalculated(x))
         {
-            cout << setprecision(2) << x << setw(15)
+            const auto y = Calculation(x);
+            cout << setw(10) << setprecision(2) << x << setw(15)
                  << setprecision(5) << y << '\n';
         }
         else
         {
-            cout << setprecision(2) << x << setw(15)
+            cout << setw(10) << setprecision(2) << x << setw(15)
                  << "not defined \n";
         }
         x += step;
@@ -47,13 +53,12 @@ int main()
     return 0;
 }
 
-bool IsCalculated(const double x, double& y)
+double Calculation(const double x)
 {
-    const auto isCalculted = x >= 0;
-    if (isCalculted)
-    {
-        y = 3 * sin(sqrt(x)) + 0.39 * x - 3.8;
-    }
-    return isCalculted;
-    
+    return 3 * sin(sqrt(x)) + 0.39 * x - 3.8;
+}
+
+bool IsCalculated(const double x)
+{
+    return x >= std::numeric_limits<double>::min();
 }
