@@ -21,7 +21,7 @@ int main()
     const auto b = 1.0 + z * z / (3.0 + z * z / 5.0);
 
     cout << "x = " << x << "; "
-         << "y = " << y << "; "
+         << "Y = " << y << "; "
          << "z = " << z << ";\n";
 
     cout << setprecision(10)
