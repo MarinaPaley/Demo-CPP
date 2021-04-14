@@ -29,20 +29,20 @@ double F2(const double x, const double a);
  */
 int main()
 {
-    const auto a = 2.5;
+    const auto THRESHOLD = 2.5;
     double x;
     cout << "Введите переменную x = ";
     cin >> x;
     double result;
-    if (x > a)
+    if (x > THRESHOLD)
     {
-        result = F1(x, a);
+        result = F1(x, THRESHOLD);
     }
     else
     {
-        result = F2(x, a);
+        result = F2(x, THRESHOLD);
     }
-    cout << "y = " << setprecision(15) << result;
+    cout << "y = " << setprecision(15) << result << endl;
     return 0;
 }
 
