@@ -4,38 +4,54 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#include <limits>
+
 
 using namespace std;
 
-double f1(const double x, const double a);
-double f2(const double x, const double a);
+/**
+ * \brief Функция расчета для случая, когда x > a.
+ * \param x Входная величина.
+ * \param a Входная величина.
+ * \return Значение функции.
+ */
+double F1(const double x, const double a);
+/**
+ * \brief Функция расчета для случая, когда x <= a.
+ * \param x Входная величина.
+ * \param a Входная величина.
+ * \return Значение функции.
+ */
+double F2(const double x, const double a);
 
-
+/**
+ * \brief Точка входа в программу.
+ * \return Код ошибки (0 - успех).
+ */
 int main()
 {
-    const auto a = 2.5;
+    const auto THRESHOLD = 2.5;
     double x;
     cout << "Введите переменную x = ";
     cin >> x;
-    if (x > a)
+    double result;
+    if (x > THRESHOLD)
     {
-        cout << "y = " << f1(x, a);
+        result = F1(x, THRESHOLD);
     }
     else
     {
-        cout << "y = " << f2(x, a);
+        result = F2(x, THRESHOLD);
     }
-
+    cout << "y = " << setprecision(15) << result << endl;
     return 0;
 }
 
-double f1(const double x, const double a)
+double F1(const double x, const double a)
 {
     return x * pow(x - a, 1.0 / 3.0);
 }
 
-double f2(const double x, const double a)
+double F2(const double x, const double a)
 {
     return x * sin(a * x);
 }
